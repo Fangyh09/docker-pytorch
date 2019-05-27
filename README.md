@@ -64,6 +64,16 @@ It is possible to run PyTorch programs inside a container using the
 `python3` command. For example, if you are within a directory containing
 some PyTorch project with entrypoint `main.py`, you could run it with
 the following command:
+```sh
+sudo docker run  -it --init \
+  --runtime=nvidia \
+  --ipc=host \
+  --volume="$PWD:/app" \
+  -e NVIDIA_VISIBLE_DEVICES=1 \
+  anibali/pytorch:cuda-8.0 \
+  bash
+```
+
 
 ```sh
 docker run --rm -it --init \
